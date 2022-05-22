@@ -1,10 +1,13 @@
-
 import './App.css';
-import Main from './Components/Main/Main';
+import Map from './Components/Map/Map';
+import Search from './Components/SearchBar/Search';
 
 function App() {
   return (
-   <Main />
+    <body>
+      <Map />
+      <Search />
+    </body>
   );
 }
 

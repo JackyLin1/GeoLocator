@@ -1,11 +1,11 @@
 import React from 'react';
-import './Main.css';
+import './Map.css';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '500px',
+  height: '600px'
 };
 
 const center = {
@@ -13,13 +13,13 @@ const center = {
   lng: -38.523
 };
 
-export default function Main () {
+export default function Map () {
+
   const api = process.env.REACT_APP_Google_Map_API_Key
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: api
   })
-
 
   const [map, setMap] = React.useState(null)
 
@@ -41,8 +41,6 @@ export default function Main () {
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-        
-     
       </GoogleMap>
   ) : <></>
 }
