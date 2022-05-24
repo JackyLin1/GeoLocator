@@ -6,7 +6,7 @@ function App() {
   return (
     <body>
       <Map />
-      <Search />
+      
     </body>
   );
 }
