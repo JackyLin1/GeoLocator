@@ -26,9 +26,6 @@ export default function Map (props) {
       zoom={10}
       center={center}
       > 
-     
-      
-      
       </GoogleMap>
     
     </div>
