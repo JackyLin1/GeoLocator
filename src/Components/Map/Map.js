@@ -25,7 +25,10 @@ export default function Map (props) {
       mapContainerStyle={containerStyle}
       zoom={10}
       center={center}
-      >
+      > 
+     
+      
+      
       </GoogleMap>
     
     </div>
