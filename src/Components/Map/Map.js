@@ -1,10 +1,10 @@
 import React from 'react';
 import './Map.css';
-import { GoogleMap, LoadScript, StandaloneSearchBox } from '@react-google-maps/api';
+import { GoogleMap, Marker} from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '500px',
-  height: '600px'
+  height: "400px",
+  width: "800px"
 };
 
 const center = {
@@ -12,28 +12,23 @@ const center = {
   lng: -123.1207
 };
 
-export default function Map () {
+export default function Map (props) {
 
-  const api = process.env.REACT_APP_Google_Map_API_Key
+  if (props.loadError) {
+    return <div>Map Cannot be loaded right now (check Google map API)</div>
+  }
 
-  const onLoad = ref => this.searchBox = ref;
-
-  const onPlacesChanged = () => console.log(this.searchBox.getPlaces());
-
-
-  return (
-    <body>
-      <LoadScript
-      googleMapsApiKey={api}
-      >
+    return props.isLoaded ? (
+    <div>
       <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
+      id="searchbox-example"
+      mapContainerStyle={containerStyle}
+      zoom={10}
+      center={center}
       >
-     
       </GoogleMap>
-    </LoadScript>
-    </body>
-  ) 
+    
+    </div>
+    ) : props.loadError
+
 }
