@@ -8,7 +8,7 @@ export default function Search (props) {
   }
 
   const grabAddress = () => {
-    console.log(document.getElementById("searchBox").value);
+    // console.log(document.getElementById("searchBox").value);
     props.setAddress(document.getElementById("searchBox").value);
   }
 
@@ -16,7 +16,8 @@ export default function Search (props) {
 
     <div>
       <h1>search bar</h1>
-      <StandaloneSearchBox>
+      <StandaloneSearchBox
+      onPlacesChanged={() => grabAddress()}>
       <input
         type="text"
         placeholder="Enter a Location"
@@ -24,9 +25,6 @@ export default function Search (props) {
         id='searchBox'
       />
       </StandaloneSearchBox>
-      <button
-      onClick={()=>grabAddress()}
-      >Locate</button>
     </div>
   ): props.loadError
 }
