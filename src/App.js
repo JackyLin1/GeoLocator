@@ -14,7 +14,7 @@ function App() {
   })
 
   const [address, setAddress] = React.useState('');
-  
+  const [history, setHistory] = React.useState([])
   
   return (
 
@@ -22,6 +22,7 @@ function App() {
       <Map 
       isLoaded={isLoaded}
       loadError={loadError}
+      history={history}
       />
       <Search
       isLoaded={isLoaded}
@@ -31,6 +32,8 @@ function App() {
       <History
       api={api}
       address={address}
+      history={history}
+      setHistory={setHistory}
       />
     </div>
     

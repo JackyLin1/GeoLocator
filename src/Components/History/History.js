@@ -5,16 +5,12 @@ import HistoryList from "./HistoryList";
 
 export default function History (props) {
 
-  const [history, setHistory] = React.useState([])
-
   Geocode.setApiKey(props.api)
 
   function findCoord () {
     Geocode.fromAddress(props.address).then(
       (res) => {
         const {lat, lng } = res.results[0].geometry.location;
-        console.log(lat, lng);
-        console.log(props.address)
         
         const searchRes = {
           lat: lat,
@@ -22,7 +18,7 @@ export default function History (props) {
           address: props.address
         }
         
-        setHistory(() => [...history, searchRes])     
+        props.setHistory(() => [...props.history, searchRes])     
       },
       (err) => {
         console.error(err);
@@ -30,7 +26,7 @@ export default function History (props) {
     )
   }
 
-  const parsedHistory = history.map (entry => <HistoryList address={entry.address} lat={entry.lat} lng={entry.lng}/>)
+  const parsedHistory = props.history.map (entry => <HistoryList address={entry.address} lat={entry.lat} lng={entry.lng}/>)
   return (
     <div>
       <button

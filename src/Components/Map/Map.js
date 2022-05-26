@@ -13,22 +13,33 @@ const center = {
 };
 
 export default function Map (props) {
+  
+  const [map, setMap] = React.useState(null)
+  
+  const onLoad = React.useCallback(function callback(map) {
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+    setMap(map)
+  }, [])
+
+  const parsedMarkers =  props.history.map (entry => <Marker position={{lat:entry.lat, lng:entry.lng}}/>)
 
   if (props.loadError) {
     return <div>Map Cannot be loaded right now (check Google map API)</div>
   }
 
     return props.isLoaded ? (
-    <div>
+    
       <GoogleMap
-      id="searchbox-example"
       mapContainerStyle={containerStyle}
-      zoom={10}
+      zoom={7}
       center={center}
+      onLoad={onLoad}
       > 
+     {parsedMarkers}
       </GoogleMap>
     
-    </div>
+ 
     ) : props.loadError
 
 }
