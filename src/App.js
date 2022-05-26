@@ -3,7 +3,7 @@ import { useJsApiLoader } from '@react-google-maps/api';
 import './App.css';
 import Search from './Components/SearchBar/Search';
 import Map from './Components/Map/Map'
-import History from './Components/History/History';
+import HistoryList from './Components/History/HistoryList';
 function App() {
 
   const api = process.env.REACT_APP_Google_Map_API_Key
@@ -27,16 +27,18 @@ function App() {
       center={center}
       />
       <Search
+      api={api}
       isLoaded={isLoaded}
       loadError={loadError}
-      setAddress={setAddress}
-      />
-      <History
-      api={api}
       address={address}
       history={history}
+      setAddress={setAddress}
       setHistory={setHistory}
       setCenter={setCenter}
+      />
+      <HistoryList
+      address={address}
+      history={history}
       />
     </div>
     

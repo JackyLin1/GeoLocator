@@ -1,15 +1,13 @@
 import React from "react";
+import './History.css'
+import History from "./History";
 
 export default function HistoryList (props) {
-  var current = new Date();
-  console.log(current)
-return (
-  <article>
-    <h4>address: {props.address}</h4>
+
+  const parsedHistory = props.history.map (entry => <History address={entry.address} lat={entry.lat} lng={entry.lng}/>)
+  return (
     <div>
-    <h4>lng: {props.lng}</h4>
-    <h4>lat: {props.lat}</h4>
-    </div>    
-  </article>
-)
+      {parsedHistory}
+    </div>
+  )
 }
