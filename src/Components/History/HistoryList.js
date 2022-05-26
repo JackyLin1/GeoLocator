@@ -19,21 +19,21 @@ export default function HistoryList (props) {
     },
   ]
 
-  const data = [];
-
-  for (let entry of props.history) {
-    data.push({
-      key: props.history.indexOf(entry),
-      address: entry.address,
-      lat: entry.lat,
-      lng: entry.lng,
-    })
-  }
-
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const Delete = () => {
-    console.log(selectedRowKeys)
+    for (let key of selectedRowKeys) {
+      props.history.splice(key,1)
+      console.log(props.history)
+      // props.setMarker()
+    }
+    setLoading(true); // ajax request after empty completing
+
+    setTimeout(() => {
+      setSelectedRowKeys([]);
+      setLoading(false);
+    }, 1000);
   }
   const onSelectChange = (newSelectedRowKeys) => {
     // console.log('selectedRowKeys changed: ', selectedRowKeys);
@@ -53,7 +53,7 @@ export default function HistoryList (props) {
           marginBottom: 16,
         }}
       >
-        <Button type="primary" disabled={!hasSelected} onClick={Delete}>
+        <Button type="submit" disabled={!hasSelected} onClick={()=>Delete()} loading={loading}>
           Delete Selected
         </Button>
         <span
@@ -64,7 +64,7 @@ export default function HistoryList (props) {
           {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
         </span>
       </div>
-      <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+      <Table rowSelection={rowSelection} columns={columns} dataSource={[...props.history]} />
     </div>
   )
 }

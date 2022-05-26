@@ -14,7 +14,7 @@ export default function Search (props) {
     // console.log(document.getElementById("searchBox").value);
     props.setAddress(document.getElementById("searchBox").value);
   }
-
+  
   function findCoord (e) {
     e.preventDefault();
     Geocode.fromAddress(props.address).then(
@@ -22,13 +22,15 @@ export default function Search (props) {
         const {lat, lng } = res.results[0].geometry.location;
         
         const searchRes = {
-          id: props.history.length,
+          key: props.history.length,
           lat: lat,
           lng: lng,
-          address: props.address
+          address: props.address,
+          visible: true,
         }
         props.setCenter({lat: lat, lng: lng})
         props.setHistory(() => [...props.history, searchRes])
+        props.setMarker (() => [...props.marker, searchRes])
         props.setAddress('')
         document.getElementById("searchBox").value = '';
       },

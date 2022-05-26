@@ -14,6 +14,7 @@ function App() {
   })
 
   const [address, setAddress] = React.useState('');
+  const [marker, setMarker] = React.useState([])
   const [history, setHistory] = React.useState([])
   const [center, setCenter] = React.useState({ lat: 49.2827, lng: -123.1207})
 
@@ -23,7 +24,8 @@ function App() {
       <Map 
       isLoaded={isLoaded}
       loadError={loadError}
-      history={history}
+      marker={marker}
+      setMarker={setMarker}
       center={center}
       />
       <Search
@@ -32,14 +34,17 @@ function App() {
       loadError={loadError}
       address={address}
       history={history}
+      marker={marker}
       setAddress={setAddress}
       setHistory={setHistory}
       setCenter={setCenter}
+      setMarker={setMarker}
       />
       <HistoryList
       address={address}
       history={history}
       setHistory={setHistory}
+      setMakrer={setMarker}
       />
     </div>
     
