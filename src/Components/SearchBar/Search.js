@@ -15,8 +15,6 @@ export default function Search (props) {
     props.setAddress(document.getElementById("searchBox").value);
   }
 
-  
-
   function findCoord (e) {
     e.preventDefault();
     Geocode.fromAddress(props.address).then(
@@ -24,6 +22,7 @@ export default function Search (props) {
         const {lat, lng } = res.results[0].geometry.location;
         
         const searchRes = {
+          id: props.history.length,
           lat: lat,
           lng: lng,
           address: props.address
@@ -38,7 +37,6 @@ export default function Search (props) {
       }
     )
   }
-
 
   return props.isLoaded ? (
 

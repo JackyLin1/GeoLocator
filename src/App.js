@@ -39,6 +39,7 @@ function App() {
       <HistoryList
       address={address}
       history={history}
+      setHistory={setHistory}
       />
     </div>
     
