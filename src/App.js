@@ -15,7 +15,8 @@ function App() {
 
   const [address, setAddress] = React.useState('');
   const [history, setHistory] = React.useState([])
-  
+  const [center, setCenter] = React.useState({ lat: 49.2827, lng: -123.1207})
+
   return (
 
     <div>
@@ -23,6 +24,7 @@ function App() {
       isLoaded={isLoaded}
       loadError={loadError}
       history={history}
+      center={center}
       />
       <Search
       isLoaded={isLoaded}
@@ -34,6 +36,7 @@ function App() {
       address={address}
       history={history}
       setHistory={setHistory}
+      setCenter={setCenter}
       />
     </div>
     

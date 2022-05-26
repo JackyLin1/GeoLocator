@@ -17,7 +17,7 @@ export default function History (props) {
           lng: lng,
           address: props.address
         }
-        
+        props.setCenter({lat: lat, lng: lng})
         props.setHistory(() => [...props.history, searchRes])     
       },
       (err) => {

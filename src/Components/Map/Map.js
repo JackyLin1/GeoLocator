@@ -7,18 +7,13 @@ const containerStyle = {
   width: "800px"
 };
 
-const center = {
-  lat: 49.2827,
-  lng: -123.1207
-};
-
 export default function Map (props) {
   
   const [map, setMap] = React.useState(null)
   
   const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
+    // const bounds = new window.google.maps.LatLngBounds(center);
+    // map.fitBounds(bounds);
     setMap(map)
   }, [])
 
@@ -28,18 +23,18 @@ export default function Map (props) {
     return <div>Map Cannot be loaded right now (check Google map API)</div>
   }
 
+  console.log(map)
     return props.isLoaded ? (
     
       <GoogleMap
       mapContainerStyle={containerStyle}
+      center={props.center}
       zoom={7}
-      center={center}
       onLoad={onLoad}
       > 
      {parsedMarkers}
       </GoogleMap>
     
- 
     ) : props.loadError
 
 }
