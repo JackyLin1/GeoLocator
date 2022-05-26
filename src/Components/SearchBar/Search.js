@@ -29,7 +29,9 @@ export default function Search (props) {
           address: props.address
         }
         props.setCenter({lat: lat, lng: lng})
-        props.setHistory(() => [...props.history, searchRes])     
+        props.setHistory(() => [...props.history, searchRes])
+        props.setAddress('')
+        document.getElementById("searchBox").value = '';
       },
       (err) => {
         console.error(err);
@@ -45,16 +47,16 @@ export default function Search (props) {
       <StandaloneSearchBox
       onPlacesChanged={() => grabAddress()}>
       <form onSubmit={findCoord}>
-      <input
-        type="text"
-        placeholder="Enter a Location"
-        className="searchBar"
-        id='searchBox'
-      />
-      <button
-      type="submit"
-      >Locate</button>
-        </form>
+        <input
+          type="text"
+          placeholder="Enter a Location"
+          className="searchBar"
+          id='searchBox'
+        />
+        <button
+          type="submit"
+        >Locate</button>
+      </form>
       </StandaloneSearchBox>
     </div>
   ): props.loadError
