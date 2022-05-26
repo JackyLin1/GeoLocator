@@ -1,3 +1,4 @@
+import React from "react"
 import { useJsApiLoader } from '@react-google-maps/api';
 import './App.css';
 import Search from './Components/SearchBar/Search';
@@ -12,6 +13,9 @@ function App() {
     libraries: ['places']
   })
 
+  const [address, setAddress] = React.useState('');
+  
+  
   return (
 
     <div>
@@ -22,9 +26,11 @@ function App() {
       <Search
       isLoaded={isLoaded}
       loadError={loadError}
+      setAddress={setAddress}
       />
       <History
       api={api}
+      address={address}
       />
     </div>
     

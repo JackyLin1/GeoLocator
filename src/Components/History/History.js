@@ -6,10 +6,11 @@ export default function History (props) {
   Geocode.setApiKey(props.api)
 
   function findCoord () {
-    Geocode.fromAddress("Vancouver").then(
+    Geocode.fromAddress(props.address).then(
       (res) => {
         const {lat, lng } = res.results[0].geometry.location;
         console.log(lat, lng);
+        console.log(props.address)
       },
       (err) => {
         console.error(err);

@@ -7,7 +7,10 @@ export default function Search (props) {
     return <div>Map Cannot be loaded right now (check Google map API)</div>
   }
 
-  const grabAddress = () => console.log(document.getElementById("searchBox").value);
+  const grabAddress = () => {
+    console.log(document.getElementById("searchBox").value);
+    props.setAddress(document.getElementById("searchBox").value);
+  }
 
   return props.isLoaded ? (
 
