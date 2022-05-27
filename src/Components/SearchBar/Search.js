@@ -22,7 +22,7 @@ export default function Search (props) {
         const {lat, lng } = res.results[0].geometry.location;
         
         const searchRes = {
-          key: props.history.length,
+          key: props.marker.length,
           lat: lat,
           lng: lng,
           address: props.address,

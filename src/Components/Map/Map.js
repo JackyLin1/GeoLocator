@@ -9,7 +9,7 @@ const containerStyle = {
 
 export default function Map (props) { 
 
-  const parsedMarkers =  props.marker.map(entry => <Marker position={{lat:entry.lat, lng:entry.lng}} visible={entry.visible}/>)
+  const parsedMarkers =  props.marker.map(entry => <Marker id={entry.key} position={{lat:entry.lat, lng:entry.lng}} visible={entry.visible}/>)
 
   if (props.loadError) {
     return <div>Map Cannot be loaded right now (check Google map API)</div>

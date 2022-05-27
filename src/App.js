@@ -4,6 +4,7 @@ import './App.css';
 import Search from './Components/SearchBar/Search';
 import Map from './Components/Map/Map'
 import HistoryList from './Components/History/HistoryList';
+import SelfLocate from "./Components/SelfLocate";
 function App() {
 
   const api = process.env.REACT_APP_Google_Map_API_Key
@@ -40,11 +41,20 @@ function App() {
       setCenter={setCenter}
       setMarker={setMarker}
       />
+      <SelfLocate
+      api={api}
+      history={history}
+      marker={marker}
+      setHistory={setHistory}
+      setCenter={setCenter}
+      setMarker={setMarker}
+      />
       <HistoryList
       address={address}
       history={history}
+      marker={marker}
       setHistory={setHistory}
-      setMakrer={setMarker}
+      setMarker={setMarker}
       />
     </div>
     

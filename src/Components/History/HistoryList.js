@@ -23,20 +23,30 @@ export default function HistoryList (props) {
   const [loading, setLoading] = useState(false);
 
   const Delete = () => {
-    for (let key of selectedRowKeys) {
-      props.history.splice(key,1)
-      console.log(props.history)
-      // props.setMarker()
-    }
     setLoading(true); // ajax request after empty completing
 
     setTimeout(() => {
       setSelectedRowKeys([]);
       setLoading(false);
     }, 1000);
+
+    const index = props.history.map(obj => obj.key).indexOf(selectedRowKeys)
+    for (let i = 0; i < props.history.length; i++) {
+      console.log('index',index)
+      if (props.history[i].key === selectedRowKeys[i]) {
+        props.history.splice(props.history.map(obj => obj.key).indexOf(selectedRowKeys), 1)
+        }
+      
+      // props.marker[key].visible = false;
+      console.log('history', props.history)
+      console.log(selectedRowKeys)
+    }
+    
+    
+    
   }
   const onSelectChange = (newSelectedRowKeys) => {
-    // console.log('selectedRowKeys changed: ', selectedRowKeys);
+    console.log('selectedRowKeys changed: ', selectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
 
@@ -53,7 +63,7 @@ export default function HistoryList (props) {
           marginBottom: 16,
         }}
       >
-        <Button type="submit" disabled={!hasSelected} onClick={()=>Delete()} loading={loading}>
+        <Button type="submit" disabled={!hasSelected} onClick={Delete} loading={loading}>
           Delete Selected
         </Button>
         <span
