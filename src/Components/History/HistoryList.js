@@ -42,8 +42,6 @@ export default function HistoryList (props) {
       console.log(selectedRowKeys)
     }
     
-    
-    
   }
   const onSelectChange = (newSelectedRowKeys) => {
     console.log('selectedRowKeys changed: ', selectedRowKeys);

@@ -5,6 +5,8 @@ import Search from './Components/SearchBar/Search';
 import Map from './Components/Map/Map'
 import HistoryList from './Components/History/HistoryList';
 import SelfLocate from "./Components/SelfLocate";
+import Timezone from "./Components/Timezone";
+
 function App() {
 
   const api = process.env.REACT_APP_Google_Map_API_Key
@@ -28,6 +30,10 @@ function App() {
       marker={marker}
       setMarker={setMarker}
       center={center}
+      /> 
+      <Timezone
+      center={center}
+      api={api}
       />
       <Search
       api={api}
