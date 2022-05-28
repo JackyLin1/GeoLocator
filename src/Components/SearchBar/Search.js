@@ -43,7 +43,6 @@ export default function Search (props) {
   return props.isLoaded ? (
 
     <div>
-      <h1>search bar</h1>
       <StandaloneSearchBox
       onPlacesChanged={() => grabAddress()}>
       <form onSubmit={findCoord}>

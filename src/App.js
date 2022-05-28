@@ -24,6 +24,7 @@ function App() {
   return (
 
     <div>
+      <div className="mapHistory">
       <Map 
       isLoaded={isLoaded}
       loadError={loadError}
@@ -31,6 +32,14 @@ function App() {
       setMarker={setMarker}
       center={center}
       /> 
+       <HistoryList
+      address={address}
+      history={history}
+      marker={marker}
+      setHistory={setHistory}
+      setMarker={setMarker}
+      />
+      </div>
       <Timezone
       center={center}
       api={api}
@@ -55,13 +64,7 @@ function App() {
       setCenter={setCenter}
       setMarker={setMarker}
       />
-      <HistoryList
-      address={address}
-      history={history}
-      marker={marker}
-      setHistory={setHistory}
-      setMarker={setMarker}
-      />
+     
     </div>
     
   );
